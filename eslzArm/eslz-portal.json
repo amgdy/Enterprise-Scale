@@ -10088,6 +10088,10 @@
                                             {
                                                 "label": "brazilsoutheast",
                                                 "value": "brazilsoutheast"
+                                            },
+                                            {
+                                                "label": "saudiarabiaeast",
+                                                "value": "saudiarabiaeast"
                                             }
                                         ],
                                         "required": true
@@ -10515,6 +10519,10 @@
                                             {
                                                 "label": "brazilsoutheast",
                                                 "value": "brazilsoutheast"
+                                            },
+                                            {
+                                                "label": "saudiarabiaeast",
+                                                "value": "saudiarabiaeast"
                                             }
                                         ],
                                         "required": true
