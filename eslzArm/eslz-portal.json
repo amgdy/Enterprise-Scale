@@ -81,7 +81,7 @@
                             "toolTip": "Select the region for tenant deployment data and default platform resource locations.",
                             "filter": true,
                             "constraints": {
-                                "allowedValues": "[map(steps('basics').getLocations.value, (item) => parse(concat('{\"label\":\"',item.regionalDisplayName,'\",\"value\":{\"name\":\"',item.name,'\",\"displayName\":\"',item.displayName,'\"}}')))]",
+                                "allowedValues": "[map(filter(steps('basics').getLocations.value, (item) => equals(item.metadata.regionType, 'Physical')), (item) => parse(concat('{\"label\":\"',item.regionalDisplayName,'\",\"value\":{\"name\":\"',item.name,'\",\"displayName\":\"',item.displayName,'\"}}')))]",
                                 "required": true
                             }
                         },
