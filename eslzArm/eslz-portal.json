@@ -10,6 +10,10 @@
                     "label": "Deployment settings",
                     "elements": [
                         {
+                            "name": "tenantSelector",
+                            "type": "Microsoft.Common.TenantSelector"
+                        },
+                        {
                             "name": "cloudEnvironment",
                             "type": "Microsoft.Common.Section",
                             "label": "",
@@ -69,7 +73,7 @@
                             "name": "locationSubscription",
                             "type": "Microsoft.Common.DropDown",
                             "label": "Region lookup subscription",
-                            "defaultValue": "[parse('[]')]",
+                            "defaultValue": "[if(equals(length(coalesce(steps('basics').getSubscriptions.data, parse('[]'))), 1), first(steps('basics').getSubscriptions.data).label, parse('[]'))]",
                             "toolTip": "Subscription used to determine available regions. Platform resource subscriptions are selected separately.",
                             "multiselect": false,
                             "selectAll": false,
@@ -92,9 +96,9 @@
                         {
                             "name": "deploymentLocation",
                             "type": "Microsoft.Common.DropDown",
-                            "label": "Deployment region",
+                            "label": "Region",
                             "defaultValue": "[parse('[]')]",
-                            "toolTip": "Select the region for tenant deployment data and default platform resource locations.",
+                            "toolTip": "Choose the Azure region that's right for you and your customers. Not every resource is available in every region.",
                             "filter": true,
                             "constraints": {
                                 "allowedValues": "[map(filter(steps('basics').getLocations.value, (item) => equals(item.metadata.regionType, 'Physical')), (item) => parse(concat('{\"label\":\"',item.regionalDisplayName,'\",\"value\":{\"name\":\"',item.name,'\",\"displayName\":\"',item.displayName,'\"}}')))]",
