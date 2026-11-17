@@ -77,7 +77,7 @@ Please note that the steps below are for the AdventureWorks reference implementa
 
 ### Deployment settings
 
-On the first page, select the *cloud environment*. This should default to the correct Azure Cloud, *only* change this if you believe the value to be incorrect. Next, select the Region. This region will primarily be used to place the deployment resources in an Azure region, but also used as the initial region for some of the resources that are deployed, such as Azure Log Analytics and Azure automation. Now proceed to *Azure core setup*.
+On the first page, select the deployment region from the Azure location list. To use another directory, switch directories in the Azure Portal before opening the deployment. The deployment region stores tenant deployment data and is also used as the initial region for some resources, such as Azure Log Analytics and Azure automation. Region availability for individual services and tenant deployments can differ from the location list. Now proceed to *Azure core setup*.
 
 ![Graphical user interface, text, application, email  Description automatically generated](./media/clip_image010.jpg)
 
