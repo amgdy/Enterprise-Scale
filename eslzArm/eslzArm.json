@@ -2363,7 +2363,7 @@
             // Creating the ESLZ management group structure
             "condition": "[empty(parameters('singlePlatformSubscriptionId'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').mgmtGroupDeploymentName]",
             "location": "[deployment().location]",
             "properties": {
@@ -2382,7 +2382,7 @@
         {
             // Deploying ALZ Custom RBAC Role Definitions
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').roleDefsDeploymentName]",
             "location": "[deployment().location]",
             "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'))]",
@@ -2404,7 +2404,7 @@
         {
             // Deploying ESLZ custom policies.
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').policyDeploymentName]",
             "location": "[deployment().location]",
             "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'))]",
@@ -2428,7 +2428,7 @@
         {
             // Deploying ESLZ custom initiatives.
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').initiativeDeploymentName]",
             "location": "[deployment().location]",
             "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'))]",
@@ -2454,7 +2454,7 @@
             // Deploying AMBA custom policies. Note: These policies are pulled from AMBA remote repo (https://www.github.com/Azure/azure-monitor-baseline-alerts). See definition of deploymentUris.monitorPolicyDefinitions for more details
             "condition": "[and(empty(parameters('singlePlatformSubscriptionId')), or(equals(parameters('enableMonitorBaselines'), 'Yes'), equals(parameters('enableServiceHealth'), 'Yes')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').monitorPolicyDeploymentName]",
             "location": "[deployment().location]",
             "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'))]",
@@ -2558,7 +2558,7 @@
             /// Deploying AMBA custom policies. Note: These policies are pulled from AMBA remote repo (https://www.github.com/Azure/azure-monitor-baseline-alerts). See definition of deploymentUris.monitorPolicyDefinitions for more details
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), or(equals(parameters('enableMonitorBaselines'), 'Yes'), equals(parameters('enableServiceHealth'), 'Yes')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('esLiteDeploymentNames').monitorPolicyLiteDeploymentName]",
             "location": "[deployment().location]",
             "scope": "[concat('Microsoft.Management/managementGroups/', parameters('enterpriseScaleCompanyPrefix'))]",
@@ -2661,7 +2661,7 @@
             // ALZ Pre-Requisites and Azure's Untold Story...
             "condition": "[not(empty(parameters('managementSubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "alz-prerequisites",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[deployment().location]",
@@ -2701,7 +2701,7 @@
             // ALZ Pre-Requisites and Azure's Untold Story... LITE
             "condition": "[not(empty(parameters('singlePlatformSubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "alz-prerequisites",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[deployment().location]",
@@ -2744,7 +2744,7 @@
             // Placing security subscription into dedicated management group
             "condition": "[not(empty(parameters('securitySubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').secSubscriptionPlacement]",
             "location": "[deployment().location]",
             "scope": "[variables('scopes').securityManagementGroup]",
@@ -2771,7 +2771,7 @@
             // Placing management subscription into dedicated management group
             "condition": "[not(empty(parameters('managementSubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').mgmtSubscriptionPlacement]",
             "location": "[deployment().location]",
             "scope": "[variables('scopes').managementManagementGroup]",
@@ -2798,7 +2798,7 @@
             // Placing connectivity subscription into dedicated management group
             "condition": "[not(empty(parameters('connectivitySubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').connectivitySubscriptionPlacement]",
             "location": "[deployment().location]",
             "scope": "[variables('scopes').connectivityManagementGroup]",
@@ -2825,7 +2825,7 @@
             // Placing identity subscription into dedicated management group
             "condition": "[not(empty(parameters('identitySubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').identitySubscriptionPlacement]",
             "location": "[deployment().location]",
             "scope": "[variables('scopes').identityManagementGroup]",
@@ -2855,7 +2855,7 @@
             // Deploying Log Analytics workspace to management subscription if condition is true
             "condition": "[and(equals(parameters('enableLogAnalytics'), 'Yes'), not(empty(parameters('managementSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').monitoringDeploymentName]",
             "location": "[deployment().location]",
             "subscriptionId": "[parameters('managementSubscriptionId')]",
@@ -2889,7 +2889,7 @@
             // Deploying Data Collection Rule for VMInsights if condition is true
             "condition": "[and(not(empty(parameters('managementSubscriptionId'))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableVmInsights'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').dataCollectionRuleVmInsightsDeploymentName]",
             "location": "[deployment().location]",
             "subscriptionId": "[parameters('managementSubscriptionId')]",
@@ -2919,7 +2919,7 @@
             // Deploying Data Collection Rule for Change Tracking if condition is true
             "condition": "[and(not(empty(parameters('managementSubscriptionId'))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableChangeTracking'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').dataCollectionRuleChangeTrackingDeploymentName]",
             "location": "[deployment().location]",
             "subscriptionId": "[parameters('managementSubscriptionId')]",
@@ -2949,7 +2949,7 @@
             // Deploying Data Collection Rule for Mdfc Defender for SQL if condition is true
             "condition": "[and(not(empty(parameters('managementSubscriptionId'))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableAscForSqlOnVm'), 'DeployIfNotExists'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').dataCollectionRuleMdfcDefenderSQLDeploymentName]",
             "location": "[deployment().location]",
             "subscriptionId": "[parameters('managementSubscriptionId')]",
@@ -2979,7 +2979,7 @@
             // Deploying user assigned identity if condition is true
             "condition": "[and(equals(parameters('enableLogAnalytics'), 'Yes'), not(empty(parameters('managementSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').userAssignedIdentityDeploymentName]",
             "location": "[deployment().location]",
             "subscriptionId": "[parameters('managementSubscriptionId')]",
@@ -3009,7 +3009,7 @@
             // Deploying Diagnostic Settings to management groups if Log Analytics was deployed via a loop
             "condition": "[and(empty(parameters('singlePlatformSubscriptionId')), not(empty(parameters('managementSubscriptionId'))), equals(parameters('enableLogAnalytics'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('mgmtGroupsArray')[copyIndex()], variables('deploymentNames').diagnosticSettingsforMGsDeploymentName), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', variables('mgmtGroupsArray')[copyIndex()])]",
             "location": "[deployment().location]",
@@ -3040,7 +3040,7 @@
             // Deploying Diagnostic Settings to ESLite management groups if Log Analytics was deployed via a loop
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), empty(parameters('managementSubscriptionId')), equals(parameters('enableLogAnalytics'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('mgmtGroupsESLiteArray')[copyIndex()], variables('deploymentNames').diagnosticSettingsforMGsDeploymentName), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', variables('mgmtGroupsESLiteArray')[copyIndex()])]",
             "location": "[deployment().location]",
@@ -3071,7 +3071,7 @@
             // Assigning Microsoft Cloud Security Benchmark policy to intermediate root management group if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableAsc'), 'Yes')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').asbPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[deployment().location]",
@@ -3094,7 +3094,7 @@
             // Assigning Microsoft Cloud Security Benchmark v2 policy to intermediate root management group if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableAsc'), 'Yes')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').asb2PolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[deployment().location]",
@@ -3121,7 +3121,7 @@
             // Assigning Service Health built-in policy to intermediate root management group if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), equals(parameters('enableServiceHealthBuiltIn'), 'Yes'), equals(parameters('enableServiceHealth'), 'No'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').monitorServiceHealthBuiltInDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[deployment().location]",
@@ -3161,7 +3161,7 @@
             // Assigning Workload Specific Customer Managed Keys Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsCMKInitiatives'), 'Yes'), equals(parameters('enableWsCMKInitiatives'), 'Audit')), not(empty(parameters('wsCMKSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsCMKDeploymentName, '-', replace(parameters('wsCMKSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsCMKSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -3211,7 +3211,7 @@
             // Assigning Workload Specific APIM Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsAPIMInitiatives'), 'Yes'), equals(parameters('enableWsAPIMInitiatives'), 'Audit')), not(empty(parameters('wsAPIMSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsAPIMDeploymentName, '-', replace(parameters('wsAPIMSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsAPIMSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -3261,7 +3261,7 @@
             // Assigning Workload Specific App Services Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsAppServicesInitiatives'), 'Yes'), equals(parameters('enableWsAppServicesInitiatives'), 'Audit')), not(empty(parameters('wsAppServicesSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsAppServicesDeploymentName, '-', replace(parameters('wsAppServicesSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsAppServicesSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -3311,7 +3311,7 @@
             // Assigning Workload Specific Automation Accounts Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsAutomationInitiatives'), 'Yes'), equals(parameters('enableWsAutomationInitiatives'), 'Audit')), not(empty(parameters('wsAutomationSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsAutomationDeploymentName, '-', replace(parameters('wsAutomationSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsAutomationSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -3361,7 +3361,7 @@
             // Assigning Workload Specific Bot Service Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsBotServiceInitiatives'), 'Yes'), equals(parameters('enableWsBotServiceInitiatives'), 'Audit')), not(empty(parameters('wsBotServiceSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsBotServiceDeploymentName, '-', replace(parameters('wsBotServiceSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsBotServiceSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -3411,7 +3411,7 @@
             // Assigning Workload Specific Cognitive Services Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsCognitiveServicesInitiatives'), 'Yes'), equals(parameters('enableWsCognitiveServicesInitiatives'), 'Audit')), not(empty(parameters('wsCognitiveServicesSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsCognitiveServicesDeploymentName, '-', replace(parameters('wsCognitiveServicesSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsCognitiveServicesSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -3461,7 +3461,7 @@
             // Assigning Workload Specific Compute Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsComputeInitiatives'), 'Yes'), equals(parameters('enableWsComputeInitiatives'), 'Audit')), not(empty(parameters('wsComputeSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsComputeDeploymentName, '-', replace(parameters('wsComputeSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsComputeSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -3511,7 +3511,7 @@
             // Assigning Workload Specific Container Apps Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsContainerAppsInitiatives'), 'Yes'), equals(parameters('enableWsContainerAppsInitiatives'), 'Audit')), not(empty(parameters('wsContainerAppsSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsContainerAppsDeploymentName, '-', replace(parameters('wsContainerAppsSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsContainerAppsSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -3561,7 +3561,7 @@
             // Assigning Workload Specific Container Instance Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsContainerInstanceInitiatives'), 'Yes'), equals(parameters('enableWsContainerInstanceInitiatives'), 'Audit')), not(empty(parameters('wsContainerInstanceSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsContainerInstanceDeploymentName, '-', replace(parameters('wsContainerInstanceSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsContainerInstanceSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -3611,7 +3611,7 @@
             // Assigning Workload Specific Container Registry Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsContainerRegistryInitiatives'), 'Yes'), equals(parameters('enableWsContainerRegistryInitiatives'), 'Audit')), not(empty(parameters('wsContainerRegistrySelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsContainerRegistryDeploymentName, '-', replace(parameters('wsContainerRegistrySelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsContainerRegistrySelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -3661,7 +3661,7 @@
             // Assigning Workload Specific Cosmos DB Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsCosmosDbInitiatives'), 'Yes'), equals(parameters('enableWsCosmosDbInitiatives'), 'Audit')), not(empty(parameters('wsCosmosDbSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsCosmosDbDeploymentName, '-', replace(parameters('wsCosmosDbSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsCosmosDbSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -3711,7 +3711,7 @@
             // Assigning Workload Specific Data Explorer Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsDataExplorerInitiatives'), 'Yes'), equals(parameters('enableWsDataExplorerInitiatives'), 'Audit')), not(empty(parameters('wsDataExplorerSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsDataExplorerDeploymentName, '-', replace(parameters('wsDataExplorerSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsDataExplorerSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -3761,7 +3761,7 @@
             // Assigning Workload Specific Data Factory Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsDataFactoryInitiatives'), 'Yes'), equals(parameters('enableWsDataFactoryInitiatives'), 'Audit')), not(empty(parameters('wsDataFactorySelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsDataFactoryDeploymentName, '-', replace(parameters('wsDataFactorySelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsDataFactorySelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -3811,7 +3811,7 @@
             // Assigning Workload Specific Event Grid Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsEventGridInitiatives'), 'Yes'), equals(parameters('enableWsEventGridInitiatives'), 'Audit')), not(empty(parameters('wsEventGridSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsEventGridDeploymentName, '-', replace(parameters('wsEventGridSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsEventGridSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -3861,7 +3861,7 @@
             // Assigning Workload Specific Event Hub Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsEventHubInitiatives'), 'Yes'), equals(parameters('enableWsEventHubInitiatives'), 'Audit')), not(empty(parameters('wsEventHubSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsEventHubDeploymentName, '-', replace(parameters('wsEventHubSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsEventHubSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -3911,7 +3911,7 @@
             // Assigning Workload Specific Key Vault Supplementary Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsKeyVaultSupInitiatives'), 'Yes'), equals(parameters('enableWsKeyVaultSupInitiatives'), 'Audit')), not(empty(parameters('wsKeyVaultSupSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsKeyVaultSupDeploymentName, '-', replace(parameters('wsKeyVaultSupSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsKeyVaultSupSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -3961,7 +3961,7 @@
             // Assigning Workload Specific Kubernetes Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsKubernetesInitiatives'), 'Yes'), equals(parameters('enableWsKubernetesInitiatives'), 'Audit')), not(empty(parameters('wsKubernetesSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsKubernetesDeploymentName, '-', replace(parameters('wsKubernetesSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsKubernetesSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -4011,7 +4011,7 @@
             // Assigning Workload Specific Machine Learning Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsMachineLearningInitiatives'), 'Yes'), equals(parameters('enableWsMachineLearningInitiatives'), 'Audit')), not(empty(parameters('wsMachineLearningSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsMachineLearningDeploymentName, '-', replace(parameters('wsMachineLearningSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsMachineLearningSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -4061,7 +4061,7 @@
             // Assigning Workload Specific MySQL Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsMySQLInitiatives'), 'Yes'), equals(parameters('enableWsMySQLInitiatives'), 'Audit')), not(empty(parameters('wsMySQLSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsMySQLDeploymentName, '-', replace(parameters('wsMySQLSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsMySQLSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -4111,7 +4111,7 @@
             // Assigning Workload Specific Network and Networking services Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsNetworkInitiatives'), 'Yes'), equals(parameters('enableWsNetworkInitiatives'), 'Audit')), not(empty(parameters('wsNetworkSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsNetworkDeploymentName, '-', replace(parameters('wsNetworkSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsNetworkSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -4164,7 +4164,7 @@
             // Assigning Workload Specific OpenAI Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsOpenAIInitiatives'), 'Yes'), equals(parameters('enableWsOpenAIInitiatives'), 'Audit')), not(empty(parameters('wsOpenAISelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsOpenAIDeploymentName, '-', replace(parameters('wsOpenAISelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsOpenAISelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -4214,7 +4214,7 @@
             // Assigning Workload Specific PostgreSQL Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsPostgreSQLInitiatives'), 'Yes'), equals(parameters('enableWsPostgreSQLInitiatives'), 'Audit')), not(empty(parameters('wsPostgreSQLSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsPostgreSQLDeploymentName, '-', replace(parameters('wsPostgreSQLSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsPostgreSQLSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -4264,7 +4264,7 @@
             // Assigning Workload Specific Service Bus Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsServiceBusInitiatives'), 'Yes'), equals(parameters('enableWsServiceBusInitiatives'), 'Audit')), not(empty(parameters('wsServiceBusSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsServiceBusDeploymentName, '-', replace(parameters('wsServiceBusSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsServiceBusSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -4314,7 +4314,7 @@
             // Assigning Workload Specific SQL Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsSQLInitiatives'), 'Yes'), equals(parameters('enableWsSQLInitiatives'), 'Audit')), not(empty(parameters('wsSQLSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsSQLDeploymentName, '-', replace(parameters('wsSQLSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsSQLSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -4364,7 +4364,7 @@
             // Assigning Workload Specific Storage Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsStorageInitiatives'), 'Yes'), equals(parameters('enableWsStorageInitiatives'), 'Audit')), not(empty(parameters('wsStorageSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsStorageDeploymentName, '-', replace(parameters('wsStorageSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsStorageSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -4414,7 +4414,7 @@
             // Assigning Workload Specific Synapse Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsSynapseInitiatives'), 'Yes'), equals(parameters('enableWsSynapseInitiatives'), 'Audit')), not(empty(parameters('wsSynapseSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsSynapseDeploymentName, '-', replace(parameters('wsSynapseSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsSynapseSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -4464,7 +4464,7 @@
             // Assigning Workload Specific Virtual Desktop Initiaitve to selected management groups if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), or(equals(parameters('enableWsVirtualDesktopInitiatives'), 'Yes'), equals(parameters('enableWsVirtualDesktopInitiatives'), 'Audit')), not(empty(parameters('wsVirtualDesktopSelectorMG'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').wsVirtualDesktopDeploymentName, '-', replace(parameters('wsVirtualDesktopSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix'))), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('wsVirtualDesktopSelectorMG')[copyIndex()], 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -4514,7 +4514,7 @@
             // Assigning Regulatory Compliance polices to desired management groups if condition is true
             "condition": "[not(empty(parameters('regulatoryComplianceInitativesToAssign')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[take(concat(variables('deploymentNames').regulatoryComplianceInitativesToAssignDeploymentName, if(contains(parameters('regulatoryComplianceInitativesToAssign')[copyIndex()].mg, '-'), split(parameters('regulatoryComplianceInitativesToAssign')[copyIndex()].mg, '-')[1], parameters('regulatoryComplianceInitativesToAssign')[copyIndex()].mg), '-', uniqueString(parameters('regulatoryComplianceInitativesToAssign')[copyIndex()].mg, parameters('regulatoryComplianceInitativesToAssign')[copyIndex()].policy.id)), 64)]",
             "scope": "[concat('Microsoft.Management/managementGroups/', replace(parameters('regulatoryComplianceInitativesToAssign')[copyIndex()].mg, 'contoso', parameters('enterpriseScaleCompanyPrefix')))]",
             "location": "[deployment().location]",
@@ -4659,7 +4659,7 @@
             // Assigning Azure Monitor Resource Diagnostics policy to intermediate root management group if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').resourceDiagnosticsPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[deployment().location]",
@@ -4692,7 +4692,7 @@
             // Assigning Azure Activity Diagnostics Log policy to intermediate root management group if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').activityDiagnosticsPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[deployment().location]",
@@ -4720,7 +4720,7 @@
             // Assigning Cost Optimization policy initiative to intermediate root management group
             "condition": "[or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').costOptimizationDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[deployment().location]",
@@ -4744,7 +4744,7 @@
             // Assigning Trusted Launch policy initiative to intermediate root management group
             "condition": "[or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').trustedLaunchDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[deployment().location]",
@@ -4768,7 +4768,7 @@
             // Assigning Zone Resilient policy initiative to intermediate root management group
             "condition": "[or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').zoneResilientDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[deployment().location]",
@@ -4792,7 +4792,7 @@
             // Assigning Audit resource location matches resource group location policy to intermediate root management group
             "condition": "[or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').resourceRgLocationDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[deployment().location]",
@@ -4816,7 +4816,7 @@
             // Assigning Microsoft Defender for Cloud configurations to subscriptions if condition is true (not policy)
             "condition": "[and(equals(parameters('enableAsc'), 'Yes'), not(empty(variables('subscriptionIds'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[concat(variables('deploymentNames').MDFCSubscriptionEnableDeploymentName, copyIndex())]",
             "subscriptionId": "[variables('subscriptionIds')[copyIndex()]]",
             "location": "[deployment().location]",
@@ -4897,7 +4897,7 @@
             // Assigning Azure Security Center configuration policy initiative to intermediate root management group if condition is true
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableAsc'), 'Yes'), equals(environment().resourceManager, 'https://management.azure.com/'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').ascPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[deployment().location]",
@@ -4967,7 +4967,7 @@
             // Assigning Azure Security Center for Open Source Databases configuration policy initiative to intermediate root management group if condition is true
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableAsc'), 'Yes'), equals(environment().resourceManager, 'https://management.azure.com/'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').atpOssDbPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[deployment().location]",
@@ -4994,7 +4994,7 @@
             // Assigning Azure Security Center for Azure SQL, MI and Synapse Databases configuration policy initiative to intermediate root management group if condition is true
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableAsc'), 'Yes'), equals(environment().resourceManager, 'https://management.azure.com/'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').atpSqlDbPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[deployment().location]",
@@ -5021,7 +5021,7 @@
             // Assigning Microsoft Defender for Endpoints policy initiative to intermediate root management group if condition is true
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableAsc'), 'Yes'), equals(environment().resourceManager, 'https://management.azure.com/'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').mdEndpointsDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[deployment().location]",
@@ -5048,7 +5048,7 @@
             // Assigning NEW Microsoft Defender for Endpoints policy initiative to intermediate root management group if condition is true: https://www.azadvertizer.net/azpolicyinitiativesadvertizer/77b391e3-2d5d-40c3-83bf-65c846b3c6a3.html
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableAsc'), 'Yes'), equals(environment().resourceManager, 'https://management.azure.com/'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').mdEndpointsAMADeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[deployment().location]",
@@ -5075,7 +5075,7 @@
             // Assigning Deny Classic Resource Creation policy to intermediate root management group if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), not(equals(parameters('denyClassicResources'), 'No')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').denyClassicResourcePolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[deployment().location]",
@@ -5103,7 +5103,7 @@
             // Assigning Deny VM Unmanaged Disk Creation policy to intermediate root management group if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), not(equals(parameters('denyVMUnmanagedDisk'), 'No')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').denyVMUnmanagedDiskPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[deployment().location]",
@@ -5127,7 +5127,7 @@
             // Az Gov Only - Assigning Azure Security Center configuration policy initiative to intermediate root management group if condition is true
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableAsc'), 'Yes'), equals(environment().resourceManager, 'https://management.usgovcloudapi.net'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').ascGovPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[deployment().location]",
@@ -5173,7 +5173,7 @@
             // Assigning Do not allow deletion of resource type Policy to the platform management group if condition is true
             "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').denyActionDeleteUAMIAMAPolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[deployment().location]",
@@ -5206,7 +5206,7 @@
             // Creating resource group for DDoS Network Protection
             "condition": "[and(equals(parameters('enableDdoS'), 'Yes'), not(empty(parameters('connectivitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').ddosRgDeploymentName]",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "location": "[deployment().location]",
@@ -5238,7 +5238,7 @@
             // Creating DDoS protection plan into the connectivity subscription
             "condition": "[and(equals(parameters('enableDdoS'), 'Yes'), not(empty(parameters('connectivitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').ddosDeploymentName]",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "resourceGroup": "[parameters('resourceNames').ddosRg]",
@@ -5267,7 +5267,7 @@
             // Assigning DDoS Policy to enforce DDoS on virtual networks if condition evaluates to true
             "condition": "[and(or(equals(parameters('enableDdoS'), 'Yes'), equals(parameters('enableDdoS'), 'Audit')), not(empty(parameters('connectivitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').ddosHubPolicyDeploymentName]",
             "scope": "[variables('scopes').connectivityManagementGroup]",
             "location": "[deployment().location]",
@@ -5297,7 +5297,7 @@
             // Creating the virtual network hub (hub and spoke)
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))), equals(parameters('enableHub'), 'vhub'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "scope": "[variables('scopes').connectivityManagementGroup]",
             "name": "[variables('deploymentNames').vnetConnectivityHubDeploymentName]",
             "dependsOn": [
@@ -5411,7 +5411,7 @@
             // Creating the H&S or NVA - Bastion Primary
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))), or(equals(parameters('enableHub'), 'vhub'), equals(parameters('enableHub'), 'nva')), equals(parameters('enableBastionPrimary'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-10-01",
+            "apiVersion": "2026-06-01",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "name": "[variables('deploymentNames').bastionPriDeploymentName]",
             "dependsOn": [
@@ -5474,7 +5474,7 @@
             // Creating the H&S or NVA - Private DNS Resolver Primary
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))), or(equals(parameters('enableHub'), 'vhub'), equals(parameters('enableHub'), 'nva')), equals(parameters('enableDnsResolverPrimary'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-10-01",
+            "apiVersion": "2026-06-01",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "name": "[variables('deploymentNames').privateDnsResolverPriDeploymentName]",
             "dependsOn": [
@@ -5538,7 +5538,7 @@
             // Creating the virtual network hub (with NVA)
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))),equals(parameters('enableHub'), 'nva'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "scope": "[variables('scopes').connectivityManagementGroup]",
             "name": "[variables('deploymentNames').nvaConnectivityHubDeploymentName]",
             "dependsOn": [
@@ -5629,7 +5629,7 @@
             // Creating the VWAN network hub (Microsoft managed)
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))),equals(parameters('enableHub'), 'vwan'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "scope": "[variables('scopes').connectivityManagementGroup]",
             "name": "[variables('deploymentNames').vwanConnectivityHubDeploymentName]",
             "dependsOn": [
@@ -5794,7 +5794,7 @@
             // VWAN - Sidecar network deployment - Primary
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))), equals(parameters('enableHub'), 'vwan'), equals(parameters('enableSidecarVnetPrimary'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-10-01",
+            "apiVersion": "2026-06-01",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "name": "[variables('deploymentNames').vwanSidecarPriDeploymentName]",
             "dependsOn": [
@@ -5843,7 +5843,7 @@
             // Creating the VWAN - Bastion Primary
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))), equals(parameters('enableHub'), 'vwan'), equals(parameters('enableSidecarVnetPrimary'), 'Yes'), equals(parameters('enableBastionPrimary'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-10-01",
+            "apiVersion": "2026-06-01",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "name": "[concat('vwan-', variables('deploymentNames').bastionPriDeploymentName)]",
             "dependsOn": [
@@ -5907,7 +5907,7 @@
             // Creating the VWAN - Private DNS Resolver Primary
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))), equals(parameters('enableHub'), 'vwan'), equals(parameters('enableSidecarVnetPrimary'), 'Yes'), equals(parameters('enableDnsResolverPrimary'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-10-01",
+            "apiVersion": "2026-06-01",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "name": "[concat('vwan-', variables('deploymentNames').privateDnsResolverPriDeploymentName)]",
             "dependsOn": [
@@ -5972,7 +5972,7 @@
             // VWAN - Sidecar network deployment - Secondary
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))), equals(parameters('enableHub'), 'vwan'), equals(parameters('enableSidecarVnetSecondary'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-10-01",
+            "apiVersion": "2026-06-01",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "name": "[variables('deploymentNames').vwanSidecarSecDeploymentName]",
             "dependsOn": [
@@ -6021,7 +6021,7 @@
             // Creating the VWAN - Bastion Secondary
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))), equals(parameters('enableHub'), 'vwan'), equals(parameters('enableSidecarVnetSecondary'), 'Yes'), equals(parameters('enableBastionSecondary'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-10-01",
+            "apiVersion": "2026-06-01",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "name": "[concat('vwan-', variables('deploymentNames').bastionSecDeploymentName)]",
             "dependsOn": [
@@ -6085,7 +6085,7 @@
             // Creating the VWAN - Private DNS Resolver Secondary
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))), equals(parameters('enableHub'), 'vwan'), equals(parameters('enableSidecarVnetSecondary'), 'Yes'), equals(parameters('enableDnsResolverSecondary'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-10-01",
+            "apiVersion": "2026-06-01",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "name": "[concat('vwan-', variables('deploymentNames').privateDnsResolverSecDeploymentName)]",
             "dependsOn": [
@@ -6150,7 +6150,7 @@
             // Deploy AVNM
             "condition": "[and(parameters('deployAVNM'), or(equals(parameters('enableHub'), 'vhub'), equals(parameters('enableHub'), 'nva')), not(empty(parameters('connectivitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "name": "[variables('deploymentNames').avnmConnectivityHubDeploymentName]",
             "dependsOn": [
@@ -6205,7 +6205,7 @@
             // Deploy AVNM Lite
             "condition": "[and(parameters('deployAVNM'), or(equals(parameters('enableHub'), 'vhub'), equals(parameters('enableHub'), 'nva')), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
             "name": "[variables('esLiteDeploymentNames').avnmLiteConnectivityHubDeploymentName]",
             "dependsOn": [
@@ -6260,7 +6260,7 @@
             // Deploying AVNM policy - to add virtual networks to AVNM network groups
             "condition": "[and(parameters('deployAVNM'), or(equals(parameters('enableHub'), 'vhub'), equals(parameters('enableHub'), 'nva')), not(empty(parameters('connectivitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-10-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').avnmPolicyDeploymentName]",
             "location": "[deployment().location]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
@@ -6299,7 +6299,7 @@
             // Deploying AVNM Lite policy - to add virtual networks to AVNM network groups
             "condition": "[and(parameters('deployAVNM'), or(equals(parameters('enableHub'), 'vhub'), equals(parameters('enableHub'), 'nva')), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-10-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('esLiteDeploymentNames').avnmLitePolicyDeploymentName]",
             "location": "[deployment().location]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
@@ -6341,7 +6341,7 @@
             // Creating resource group for Private DNS Zones
             "condition": "[and(equals(parameters('enablePrivateDnsZones'), 'Yes'), not(empty(parameters('connectivitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').privateDnsZoneRgDeploymentName]",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "location": "[deployment().location]",
@@ -6376,7 +6376,7 @@
             // Creating Private DNS Zones into the connectivity subscription and linking them to a secondary location if provided.
             "condition": "[and(equals(parameters('enablePrivateDnsZones'), 'Yes'), not(empty(parameters('connectivitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[concat(variables('deploymentNames').privateDnsZonesDeploymentName, copyIndex())]",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "resourceGroup": "[parameters('resourceNames').privateDnsRg]",
@@ -6423,7 +6423,7 @@
             // Creating resource group for Private DNS Zones for a secondary region
             "condition": "[and(equals(parameters('enablePrivateDnsZonesSecondary'), 'Yes'), not(empty(parameters('connectivitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').privateDnsZoneRg2DeploymentName]",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "location": "[deployment().location]",
@@ -6458,7 +6458,7 @@
             // Creating Private DNS Zones into the connectivity subscription for a secondary region
             "condition": "[and(equals(parameters('enablePrivateDnsZonesSecondary'), 'Yes'), not(empty(parameters('connectivitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[concat(variables('deploymentNames').privateDnsZones2DeploymentName, copyIndex())]",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "resourceGroup": "[parameters('resourceNames').privateDnsRg2]",
@@ -6506,7 +6506,7 @@
             // Creating the virtual network hub (hub and spoke) in a secondary region
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))),  equals(parameters('enableSecondaryRegion'), 'Yes'), equals(parameters('enableHubSecondary'), 'vhub'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "scope": "[variables('scopes').connectivityManagementGroup]",
             "name": "[variables('deploymentNames').vnetConnectivityHub2DeploymentName]",
             "dependsOn": [
@@ -6620,7 +6620,7 @@
             // Creating the H&S or NVA - Bastion Secondary
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))), or(equals(parameters('enableHub'), 'vhub'), equals(parameters('enableHub'), 'nva')), equals(parameters('enableBastionSecondary'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-10-01",
+            "apiVersion": "2026-06-01",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "name": "[variables('deploymentNames').bastionSecDeploymentName]",
             "dependsOn": [
@@ -6683,7 +6683,7 @@
             // Creating the H&S or NVA - Private DNS Resolver Secondary
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))), or(equals(parameters('enableHub'), 'vhub'), equals(parameters('enableHub'), 'nva')), equals(parameters('enableDnsResolverSecondary'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-10-01",
+            "apiVersion": "2026-06-01",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "name": "[variables('deploymentNames').privateDnsResolverSecDeploymentName]",
             "dependsOn": [
@@ -6747,7 +6747,7 @@
             // Creating the virtual network hub (with NVA) in a secondary region
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))),equals(parameters('enableSecondaryRegion'), 'Yes'), equals(parameters('enableHubSecondary'), 'nva'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "scope": "[variables('scopes').connectivityManagementGroup]",
             "name": "[variables('deploymentNames').nvaConnectivityHub2DeploymentName]",
             "dependsOn": [
@@ -6825,7 +6825,7 @@
             // Peering the primary hub and the secondary hub (when nva or vhub is selected)
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))), or(equals(parameters('enableHub'), 'nva'), equals(parameters('enableHub'), 'vhub')), or(equals(parameters('enableHubSecondary'), 'nva'), equals(parameters('enableHubSecondary'), 'vhub')), equals(parameters('enableSecondaryRegion'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').hubPeeringDeploymentName]",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "location": "[parameters('connectivityLocation')]",
@@ -6874,7 +6874,7 @@
             // Creating route table from first region to second region
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))), equals(parameters('enableHub'), 'vhub'), equals(parameters('enableAzFw'), 'Yes'), equals(parameters('enableAzFwSecondary'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').vnetConnectivityRouteTableDeploymentName]",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "resourceGroup": "[parameters('resourceNames').connectivityRg]",
@@ -6924,7 +6924,7 @@
             // Creating route table from second region to first region
             "condition": "[and(not(empty(parameters('connectivitySubscriptionId'))), equals(parameters('enableHub'), 'vhub'), equals(parameters('enableAzFw'), 'Yes'), equals(parameters('enableAzFwSecondary'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').vnetConnectivityRouteTable2DeploymentName]",
             "subscriptionId": "[parameters('connectivitySubscriptionId')]",
             "resourceGroup": "[parameters('resourceNames').connectivityRgSecondary]",
@@ -6977,7 +6977,7 @@
             // Deploying Private DNS Zones policy assignment for PaaS services using built-in policies
             "condition": "[or(equals(parameters('enablePrivateDnsZonesForLzs'), 'Yes'), equals(parameters('enablePrivateDnsZonesForLzs'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-10-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').privateDnsPolicyDeploymentName]",
             "location": "[deployment().location]",
             "scope": "[variables('scopes').corpManagementGroup]",
@@ -7014,7 +7014,7 @@
             // Assigning RBAC for Private DNS Zone Policy assignment to the connectivity hub
             "condition": "[equals(parameters('enablePrivateDnsZonesForLzs'), 'Yes')]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-10-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').dnsZoneRoleAssignmentDeploymentName]",
             "location": "[deployment().location]",
             "subscriptionId": "[variables('singleVsDedicatedConnectivitySub')]",
@@ -7044,7 +7044,7 @@
             // Assigning Azure Monitor for VMs policy initiative to platform management group if condition is true
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), or(equals(parameters('enableVmMonitoring'), 'Yes'), equals(parameters('enableVmMonitoring'), 'Audit')), equals(parameters('enableVmInsights'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').azVmMonitorPolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[deployment().location]",
@@ -7082,7 +7082,7 @@
             // Assigning Azure Monitor for VMs policy initiative to landing zone management group if condition is true
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), or(equals(parameters('enableVmMonitoring'), 'Yes'), equals(parameters('enableVmMonitoring'), 'Audit')), equals(parameters('enableVmInsights'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').azVmMonitorPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -7123,7 +7123,7 @@
             // Assigning Azure Monitor for VMSS policy initiative to platform management group if condition is true
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), or(equals(parameters('enableVmssMonitoring'), 'Yes'), equals(parameters('enableVmssMonitoring'), 'Audit')), equals(parameters('enableVmInsights'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').azVmssMonitorPolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[deployment().location]",
@@ -7161,7 +7161,7 @@
             // Assigning Azure Monitor for VMSS policy initiative to landing zone management group if condition is true
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), or(equals(parameters('enableVmssMonitoring'), 'Yes'), equals(parameters('enableVmssMonitoring'), 'Audit')), equals(parameters('enableVmInsights'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').azVmssMonitorPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -7202,7 +7202,7 @@
             // Assigning Azure Monitor for Arc-enabled VMs policy initiative to platform management group if condition is true
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), or(equals(parameters('enableVmHybridMonitoring'), 'Yes'), equals(parameters('enableVmHybridMonitoring'), 'Audit')), equals(parameters('enableVmInsights'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').azVmHybridMonitorPolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[deployment().location]",
@@ -7236,7 +7236,7 @@
             // Assigning Azure Monitor for Arc-enabled VMs policy initiative to landing management group if condition is true
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), or(equals(parameters('enableVmHybridMonitoring'), 'Yes'), equals(parameters('enableVmHybridMonitoring'), 'Audit')), equals(parameters('enableVmInsights'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').azVmHybridMonitorPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -7273,7 +7273,7 @@
             // Assigning Azure Update Manager policy to platform management group if condition is true
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableUpdateMgmt'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').azureUpdateManagerPolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[deployment().location]",
@@ -7306,7 +7306,7 @@
             // Assigning Azure Update Manager policy to landing zone management group if condition is true
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableUpdateMgmt'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').azureUpdateManagerPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -7339,7 +7339,7 @@
             // Assigning ChangeTracking for VMs policy initiative to platform management group if condition is true
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableChangeTracking'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').ChangeTrackingVmDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[deployment().location]",
@@ -7377,7 +7377,7 @@
             // Assigning ChangeTracking for VMs policy initiative to landing zone management group if condition is true
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableChangeTracking'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').ChangeTrackingVmDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -7418,7 +7418,7 @@
             // Assigning ChangeTracking for VMSS policy initiative to platform management group if condition is true
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableChangeTracking'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').ChangeTrackingVmssDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[deployment().location]",
@@ -7456,7 +7456,7 @@
             // Assigning ChangeTracking for VMSS policy initiative to landing zone management group if condition is true
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableChangeTracking'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').ChangeTrackingVmssDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -7497,7 +7497,7 @@
             // Assigning ChangeTracking for Hyrbid VMs policy initiative to platform management group if condition is true
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableChangeTracking'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').ChangeTrackingVmArcDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[deployment().location]",
@@ -7531,7 +7531,7 @@
             // Assigning ChangeTracking for Hyrbid VMs policy initiative to landing zone management group if condition is true
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableChangeTracking'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').ChangeTrackingVmArcDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -7568,7 +7568,7 @@
             // Assigning MDFC Defender for SQL AMA initiative to platform management group if condition is true
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableAscForSqlOnVm'), 'DeployIfNotExists'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').MDFCDefenderSqlAmaDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[deployment().location]",
@@ -7617,7 +7617,7 @@
             // Assigning MDFC Defender for SQL AMA initiative to landing zone management group if condition is true
             "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableAscForSqlOnVm'), 'DeployIfNotExists'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').MDFCDefenderSqlAmaDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -7669,7 +7669,7 @@
             // Assigning Azure Backup policy to landing zones management group if condition is true
             "condition": "[or(equals(parameters('enableVmBackup'), 'Yes'), equals(parameters('enableVmBackup'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').azBackupLzPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -7696,7 +7696,7 @@
             // Assigning DDoS Policy to enforce DDoS on virtual networks in landing zones management group if condition evaluates to true
             "condition": "[and(or(equals(parameters('enableLzDdoS'), 'Yes'), equals(parameters('enableLzDdoS'), 'Audit')), not(empty(parameters('connectivitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').ddosLzPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -7726,7 +7726,7 @@
             // Assigning Aks Priv Escalation policy to landing zones management group if condition is true
             "condition": "[or(equals(parameters('denyAksPrivilegedEscalation'), 'Yes'), equals(parameters('denyAksPrivilegedEscalation'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').aksPrivEscalationPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -7750,7 +7750,7 @@
             // Assigning Aks Priviliged policy to landing zones management group if condition is true
             "condition": "[or(equals(parameters('denyAksPrivileged'), 'Yes'), equals(parameters('denyAksPrivileged'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').aksPrivilegedPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -7774,7 +7774,7 @@
             // Assigning Https enforcement for AKS policy to landing zones management group if condition is true
             "condition": "[or(equals(parameters('denyHttpIngressForAks'), 'Yes'), equals(parameters('denyHttpIngressForAks'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').aksHttpsPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -7798,7 +7798,7 @@
             // Assigning TLS-SSL policy initiative to landing zones management group if condition is true
             "condition": "[or(equals(parameters('enableEncryptionInTransit'), 'Yes'), equals(parameters('enableEncryptionInTransit'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').tlsSslPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -7825,7 +7825,7 @@
             // Assigning IP Fwd policy to landing zones management group if condition is true
             "condition": "[or(equals(parameters('denyIpForwarding'), 'Yes'),equals(parameters('denyIpForwarding'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').ipFwPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -7849,7 +7849,7 @@
             // Assigning deny public endpoint initiative to corp connected landing zones management group if condition is true
             "condition": "[or(equals(parameters('denyPublicEndpoints'), 'Yes'),equals(parameters('denyPublicEndpoints'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').publicEndpointPolicyDeploymentName]",
             "scope": "[variables('scopes').corpManagementGroup]",
             "location": "[deployment().location]",
@@ -7876,7 +7876,7 @@
             // Assigning deny NIC with Public IP policy to corp connected landing zones management group if condition is true
             "condition": "[or(equals(parameters('denyPipOnNicforCorp'), 'Yes'), equals(parameters('denyPipOnNicforCorp'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').pipOnNicPolicyDeploymentName]",
             "scope": "[variables('scopes').corpManagementGroup]",
             "location": "[deployment().location]",
@@ -7900,7 +7900,7 @@
             // Assigning deny management ports from internet policy landing zones management group if condition is true
             "condition": "[or(equals(parameters('denyMgmtPorts'), 'Yes'), equals(parameters('denyMgmtPorts'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').mgmtFromInternetPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -7926,7 +7926,7 @@
         {
             "condition": "[or(equals(parameters('enablePrivateSubnet'), 'Yes'), equals(parameters('enablePrivateSubnet'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').privateSubnetDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[deployment().location]",
@@ -7952,7 +7952,7 @@
         {
             "condition": "[or(equals(parameters('enablePrivateSubnet'), 'Yes'), equals(parameters('enablePrivateSubnet'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').privateSubnetDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -7979,7 +7979,7 @@
             // Assigning deny storage without https policy to landing zones management group if condition is true
             "condition": "[or(equals(parameters('enableStorageHttps'), 'Yes'), equals(parameters('enableStorageHttps'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').storageHttpsPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -8003,7 +8003,7 @@
             // Assigning Key Vault guardrails initiative to landing zones management group if condition is true
             "condition": "[or(equals(parameters('enforceKvGuardrails'), 'Yes'), equals(parameters('enforceKvGuardrails'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').kvGuardrailsPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -8030,7 +8030,7 @@
             // Assigning Key Vault guardrails initiative to platform management group if condition is true
             "condition": "[or(equals(parameters('enforceKvGuardrailsPlat'), 'Yes'), equals(parameters('enforceKvGuardrailsPlat'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').kvGuardrailsPolicyPlatDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[deployment().location]",
@@ -8057,7 +8057,7 @@
             // Assigning Azure Recovery Services - Backup and Site Recovery - guardrails initiative to landing zones management group if condition is true
             "condition": "[or(equals(parameters('enforceBackup'), 'Yes'), equals(parameters('enforceBackup'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').backupPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -8084,7 +8084,7 @@
             // Assigning Azure Recovery Services - Backup and Site Recovery - guardrails initiative to platform management group if condition is true
             "condition": "[or(equals(parameters('enforceBackupPlat'), 'Yes'), equals(parameters('enforceBackupPlat'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').backupPlatPolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[deployment().location]",
@@ -8111,7 +8111,7 @@
             // Assigning Guest Attestation initiative to platform management group if condition is true
             "condition": "[equals(parameters('enableGuestAttestationPlat'), 'Yes')]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').guestAttPlatPolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[deployment().location]",
@@ -8141,7 +8141,7 @@
             // Assigning Guest Attestation initiative to landing zone management group if condition is true
             "condition": "[equals(parameters('enableGuestAttestationLZ'), 'Yes')]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').guestAttLZPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -8171,7 +8171,7 @@
             // Assigning policy to deny deployment of vWAN/ER/VPN Gateways to corp management group if condition is true
             "condition": "[or(equals(parameters('denyHybridNetworking'), 'Yes'), equals(parameters('denyHybridNetworking'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').denyHybridNetworkingPolicyDeploymentName]",
             "scope": "[variables('scopes').corpManagementGroup]",
             "location": "[deployment().location]",
@@ -8195,7 +8195,7 @@
             // Assigning policy to audit deployment of Private Link Private DNS Zones to corp landing zones management group if condition is true
             "condition": "[or(equals(parameters('auditPeDnsZones'), 'Yes'), equals(parameters('auditPeDnsZones'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').auditPeDnsZonesPolicyDeploymentName]",
             "scope": "[variables('scopes').corpManagementGroup]",
             "location": "[deployment().location]",
@@ -8225,7 +8225,7 @@
             // Assigning policy to audit deployment of WAF on Application Gateways to landing zones management group if condition is true
             "condition": "[or(equals(parameters('auditAppGwWaf'), 'Yes'), equals(parameters('auditAppGwWaf'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').auditAppGWWafPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -8249,7 +8249,7 @@
             // Assigning policy to audit Azure Compute Security Baseline compliance to the landing zones management group if condition is true
             "condition": "[or(equals(parameters('enforceACSB'), 'Yes'), equals(parameters('enforceACSB'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').enforceACSBPolicyDeploymentName]",
             "scope": "[variables('scopes').eslzRootManagementGroup]",
             "location": "[deployment().location]",
@@ -8276,7 +8276,7 @@
             // Assigning policy to audit Azure services supported in Azure Local disconnected operations to the Local landing zones management group if condition is true
             "condition": "[or(equals(parameters('enforceAldoServices'), 'Yes'), equals(parameters('enforceAldoServices'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').enforceAldoServicesPolicyDeploymentName]",
             "scope": "[variables('scopes').localManagementGroup]",
             "location": "[deployment().location]",
@@ -8300,7 +8300,7 @@
             // Assigning deny subnet without nsg policy to landing zones management group if condition is true
             "condition": "[or(equals(parameters('denySubnetWithoutNsg'), 'Yes'), equals(parameters('denySubnetWithoutNsg'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').subnetNsgPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -8327,7 +8327,7 @@
             // Assigning sql audit policy to landing zones management group if condition is true
             "condition": "[or(equals(parameters('enableSqlAudit'), 'Yes'), equals(parameters('enableSqlAudit'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').sqlAuditPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -8360,7 +8360,7 @@
             // Assigning Log Analytics Contributor RBAC Role for SQL Auditing Assignment on Management Subscription
             "condition": "[equals(parameters('enableSqlAudit'), 'Yes')]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-10-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').sqlAuditRoleAssignmentDeploymentName1]",
             "location": "[deployment().location]",
             "subscriptionId": "[variables('singleVsDedicatedMgmtSub')]",
@@ -8390,7 +8390,7 @@
             // Assigning SQL Security Manager RBAC Role for SQL Auditing Assignment on Management Subscription
             "condition": "[equals(parameters('enableSqlAudit'), 'Yes')]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-10-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').sqlAuditRoleAssignmentDeploymentName2]",
             "location": "[deployment().location]",
             "subscriptionId": "[variables('singleVsDedicatedMgmtSub')]",
@@ -8420,7 +8420,7 @@
             // Assigning sql encryption policy to landing zones management group if condition is true
             "condition": "[or(equals(parameters('enableSqlEncryption'), 'Yes'), equals(parameters('enableSqlEncryption'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').sqlEncryptionPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -8447,7 +8447,7 @@
             // Assigning sql threat detection policy to landing zones management group if condition is true
             "condition": "[or(equals(parameters('enableSqlThreat'), 'Yes'), equals(parameters('enableSqlThreat'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').sqlThreatPolicyDeploymentName]",
             "scope": "[variables('scopes').lzsManagementGroup]",
             "location": "[deployment().location]",
@@ -8474,7 +8474,7 @@
             // Assigning decommissioned initiative to decommissioned management group if condition is true
             "condition": "[or(equals(parameters('enableDecommissioned'), 'Yes'), equals(parameters('enableDecommissioned'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').decommissionPolicyDeploymentName]",
             "scope": "[variables('scopes').decommissionedManagementGroup]",
             "location": "[deployment().location]",
@@ -8501,7 +8501,7 @@
             // Assigning sandbox initiative to sandbox management group if condition is true
             "condition": "[or(equals(parameters('enableSandbox'), 'Yes'), equals(parameters('enableSandbox'), 'Audit'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').sandboxPolicyDeploymentName]",
             "scope": "[variables('scopes').sandboxManagementGroup]",
             "location": "[deployment().location]",
@@ -8531,7 +8531,7 @@
             // Assigning Azure Backup policy to identity management group if condition is true
             "condition": "[and(equals(parameters('enableVmBackupForIdentity'), 'Yes'), not(empty(parameters('identitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').azBackupIdentityPolicyDeploymentName]",
             "scope": "[variables('scopes').identityManagementGroup]",
             "location": "[deployment().location]",
@@ -8558,7 +8558,7 @@
             // Assigning deny Public Ip policy to identity management group if condition is true
             "condition": "[and(equals(parameters('denyPipForIdentity'), 'Yes'), not(empty(parameters('identitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').pipPolicyDeploymentName]",
             "scope": "[variables('scopes').identityManagementGroup]",
             "location": "[deployment().location]",
@@ -8583,7 +8583,7 @@
             // Assigning deny subnet without nsg policy to identity management group if condition is true
             "condition": "[and(equals(parameters('denySubnetWithoutNsgForIdentity'), 'Yes'), not(empty(parameters('identitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').subnetNsgIdentityPolicyDeploymentName]",
             "scope": "[variables('scopes').identityManagementGroup]",
             "location": "[deployment().location]",
@@ -8611,7 +8611,7 @@
             // Assigning deny management ports from internet on identity management group if condition is true
             "condition": "[and(equals(parameters('denyMgmtPortsForIdentity'), 'Yes'), not(empty(parameters('identitySubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').mgmtFromInternetIdentityPolicyDeploymentName]",
             "scope": "[variables('scopes').identityManagementGroup]",
             "location": "[deployment().location]",
@@ -8639,7 +8639,7 @@
             // Peer vnet in identity subscription to connectivity hub if vhub or nva condition is true
             "condition": "[and(or(equals(parameters('enableHub'), 'nva'), equals(parameters('enableHub'), 'vhub')), not(empty(parameters('identityAddressPrefix'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').identityPeeringDeploymentName]",
             "subscriptionId": "[parameters('identitySubscriptionId')]",
             "location": "[parameters('connectivityLocation')]",
@@ -8686,7 +8686,7 @@
             // Peer vnet in identity subscription to connectivity hub in a secondary region if vhub or nva condition is true
             "condition": "[and(or(equals(parameters('enableHubSecondary'), 'nva'), equals(parameters('enableHub'), 'vhub')), not(empty(parameters('identityAddressPrefixSecondary'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').identityPeering2DeploymentName]",
             "subscriptionId": "[parameters('identitySubscriptionId')]",
             "location": "[parameters('connectivityLocationSecondary')]",
@@ -8733,7 +8733,7 @@
             // Peer vnet in identity subscription to connectivity hub if vwan condition is true
             "condition": "[and(equals(parameters('enableHub'), 'vwan'), not(empty(parameters('identityAddressPrefix'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').identityVwanPeeringDeploymentName]",
             "subscriptionId": "[parameters('identitySubscriptionId')]",
             "location": "[parameters('connectivityLocation')]",
@@ -8780,7 +8780,7 @@
             // Peer vnet in identity subscription to connectivity hub if vwan condition is true
             "condition": "[and(equals(parameters('enableHubSecondary'), 'vwan'), not(empty(parameters('identityAddressPrefixSecondary'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').identityVwanPeering2DeploymentName]",
             "subscriptionId": "[parameters('identitySubscriptionId')]",
             "location": "[parameters('connectivityLocationSecondary')]",
@@ -8830,7 +8830,7 @@
             // Placing subscription(s) into online landing zone management group
             "condition": "[not(empty(parameters('onlineLzSubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[concat(variables('deploymentNames').onlineLzSubs, copyIndex())]",
             "scope": "[variables('scopes').onlineManagementGroup]",
             "location": "[deployment().location]",
@@ -8865,7 +8865,7 @@
             // Placing subscriptions into corp landing zone management group
             "condition": "[not(empty(parameters('corpLzSubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[concat(variables('deploymentNames').corpLzSubs, copyIndex())]",
             "scope": "[variables('scopes').corpManagementGroup]",
             "location": "[deployment().location]",
@@ -8900,7 +8900,7 @@
             // Placing subscriptions into corp landing zone management group (and do subsequent peering)
             "condition": "[not(empty(parameters('corpConnectedLzSubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[concat(variables('deploymentNames').corpConnectedMoveLzSubs, copyIndex())]",
             "scope": "[variables('scopes').corpManagementGroup]",
             "location": "[deployment().location]",
@@ -8935,7 +8935,7 @@
             // Peering corp connected lz vnet to connectivity sub (when nva or vhub is selected)
             "condition": "[and(or(equals(parameters('enableHub'), 'nva'), equals(parameters('enableHub'), 'vhub')), not(empty(parameters('corpConnectedLzSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
+            "apiVersion": "2026-06-01",
             "name": "[concat(variables('deploymentNames').corpPeeringDeploymentName, copyIndex())]",
             "subscriptionId": "[if(not(empty(parameters('corpConnectedLzSubscriptionId'))), parameters('corpConnectedLzSubscriptionId')[copyIndex()].subs, '')]",
             "location": "[parameters('connectivityLocation')]",
@@ -9054,7 +9054,7 @@
             // Creating the ESLZ Lite management group structure
             "condition": "[not(empty(parameters('singlePlatformSubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-10-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('esLiteDeploymentNames').mgmtGroupLiteDeploymentName]",
             "location": "[deployment().location]",
             "properties": {
@@ -9077,7 +9077,7 @@
             // Placing Platform subscription into dedicated management group
             "condition": "[not(empty(parameters('singlePlatformSubscriptionId')))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('esLiteDeploymentNames').platformLiteSubscriptionPlacement]",
             "location": "[deployment().location]",
             "scope": "[variables('scopes').platformManagementGroup]",
@@ -9107,7 +9107,7 @@
             // Deploying Log Analytics workspace to platform subscription if condition is true
             "condition": "[and(equals(parameters('enableLogAnalytics'), 'Yes'), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('esLiteDeploymentNames').monitoringLiteDeploymentName]",
             "location": "[deployment().location]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
@@ -9144,7 +9144,7 @@
             // Deploying user assigned identity if condition is true
             "condition": "[and(equals(parameters('enableLogAnalytics'), 'Yes'), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('esLiteDeploymentNames').userAssignedIdentityLiteDeploymentName]",
             "location": "[deployment().location]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
@@ -9177,7 +9177,7 @@
             // Creating resource group for DDoS Network Protection
             "condition": "[and(equals(parameters('enableDdoS'), 'Yes'), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('esLiteDeploymentNames').ddosRgLiteDeploymentName]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
             "location": "[deployment().location]",
@@ -9210,7 +9210,7 @@
             // Creating DDoS protection plan into the connectivity subscription
             "condition": "[and(equals(parameters('enableDdoS'), 'Yes'), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('esLiteDeploymentNames').ddosLiteDeploymentName]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
             "resourceGroup": "[parameters('resourceNames').ddosRg]",
@@ -9240,7 +9240,7 @@
             // Creating resource group for Private DNS Zones
             "condition": "[and(equals(parameters('enablePrivateDnsZones'), 'Yes'), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('esLiteDeploymentNames').privateDnsZoneRgLiteDeploymentName]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
             "location": "[deployment().location]",
@@ -9278,7 +9278,7 @@
             // Creating resource group for Private DNS Zones for a secondary region
             "condition": "[and(equals(parameters('enablePrivateDnsZonesSecondary'), 'Yes'), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('esLiteDeploymentNames').privateDnsZoneRgLite2DeploymentName]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
             "location": "[deployment().location]",
@@ -9315,7 +9315,7 @@
             // Creating Private DNS Zones into the connectivity subscription for only a primary region, and linking them to the secondary if provided.
             "condition": "[and(equals(parameters('enablePrivateDnsZones'), 'Yes'), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[concat(variables('esLiteDeploymentNames').privateDnsZonesLiteDeploymentName, copyIndex())]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
             "resourceGroup": "[parameters('resourceNames').privateDnsRg]",
@@ -9365,7 +9365,7 @@
             // Creating Private DNS Zones into the connectivity subscription for a secondary region
             "condition": "[and(equals(parameters('enablePrivateDnsZonesSecondary'), 'Yes'), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[concat(variables('esLiteDeploymentNames').privateDnsZonesLite2DeploymentName, copyIndex())]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
             "resourceGroup": "[parameters('resourceNames').privateDnsRg2]",
@@ -9412,7 +9412,7 @@
             // Assigning DDoS Policy to enforce DDoS on virtual networks if condition evaluates to true
             "condition": "[and(and(equals(parameters('enableDdoS'), 'Yes'), equals(parameters('enableHub'), 'vhub')), not(empty(parameters('singlePlatformSubscriptionId'))), equals(parameters('enableHub'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('esLiteDeploymentNames').ddosHubLitePolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[deployment().location]",
@@ -9445,7 +9445,7 @@
             // Configuring and deploying the connectivity hub (hub and spoke)
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))),equals(parameters('enableHub'), 'vhub'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-05-01",
+            "apiVersion": "2026-06-01",
             "scope": "[variables('scopes').platformManagementGroup]",
             "name": "[variables('esLitedeploymentNames').vnetConnectivityHubLiteDeploymentName]",
             "dependsOn": [
@@ -9542,7 +9542,7 @@
             // Configuring and deploying the connectivity hub (NVA)
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))),equals(parameters('enableHub'), 'nva'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-05-01",
+            "apiVersion": "2026-06-01",
             "scope": "[variables('scopes').platformManagementGroup]",
             "name": "[variables('esLitedeploymentNames').nvaConnectivityHubLiteDeploymentName]",
             "dependsOn": [
@@ -9621,7 +9621,7 @@
             // Creating the VWAN network hub (Microsoft managed)
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))),equals(parameters('enableHub'), 'vwan'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "scope": "[variables('scopes').platformManagementGroup]",
             "name": "[variables('esLitedeploymentNames').vwanConnectivityHubLiteDeploymentName]",
             "dependsOn": [
@@ -9750,7 +9750,7 @@
             // Configuring and deploying the connectivity hub (hub and spoke) in a secondary region
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), equals(parameters('enableSecondaryRegion'), 'Yes'), equals(parameters('enableHubSecondary'), 'vhub'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-05-01",
+            "apiVersion": "2026-06-01",
             "scope": "[variables('scopes').platformManagementGroup]",
             "name": "[variables('esLitedeploymentNames').vnetConnectivityHubLite2DeploymentName]",
             "dependsOn": [
@@ -9847,7 +9847,7 @@
             // Configuring and deploying the connectivity hub (NVA) in a secondary region
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), equals(parameters('enableSecondaryRegion'), 'Yes'), equals(parameters('enableHubSecondary'), 'nva'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-05-01",
+            "apiVersion": "2026-06-01",
             "scope": "[variables('scopes').platformManagementGroup]",
             "name": "[variables('esLitedeploymentNames').nvaConnectivityHubLite2DeploymentName]",
             "dependsOn": [
@@ -9926,7 +9926,7 @@
             // Peering the primary hub and the secondary hub (when nva or vhub is selected)
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), or(equals(parameters('enableHub'), 'nva'), equals(parameters('enableHub'), 'vhub')), or(equals(parameters('enableHubSecondary'), 'nva'), equals(parameters('enableHubSecondary'), 'vhub')), equals(parameters('enableSecondaryRegion'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('esLitedeploymentNames').hubPeeringDeploymentName]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
             "location": "[parameters('connectivityLocation')]",
@@ -9983,7 +9983,7 @@
             // Creating routing from first region to second region
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), equals(parameters('enableHub'), 'vhub'), equals(parameters('enableAzFw'), 'Yes'), equals(parameters('enableAzFwSecondary'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('esLitedeploymentNames').vnetConnectivityRouteTableDeploymentName]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
             "resourceGroup": "[parameters('resourceNames').connectivityRg]",
@@ -10033,7 +10033,7 @@
             // Creating routing from second region to first region
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), equals(parameters('enableHub'), 'vhub'), equals(parameters('enableAzFw'), 'Yes'), equals(parameters('enableAzFwSecondary'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('esLiteDeploymentNames').vnetConnectivityRouteTable2DeploymentName]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
             "resourceGroup": "[parameters('resourceNames').connectivityRgSecondary]",
@@ -10083,7 +10083,7 @@
             // Deploying Data Collection Rule for VM Insights if condition is true
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableVmInsights'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('esLiteDeploymentNames').dataCollectionRuleVmInsightsLiteDeploymentName]",
             "location": "[deployment().location]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
@@ -10116,7 +10116,7 @@
             // Deploying Data Collection Rule for Change Tracking if condition is true
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableChangeTracking'), 'Yes'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('esLiteDeploymentNames').dataCollectionRuleChangeTrackingLiteDeploymentName]",
             "location": "[deployment().location]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
@@ -10149,7 +10149,7 @@
             // Deploying Data Collection Rule for Mdfc Defender for SQL if condition is true
             "condition": "[and(not(empty(parameters('singlePlatformSubscriptionId'))), equals(parameters('enableLogAnalytics'), 'Yes'), equals(parameters('enableAscForSqlOnVm'), 'DeployIfNotExists'))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('esLiteDeploymentNames').dataCollectionRuleMdfcDefenderSQLLiteDeploymentName]",
             "location": "[deployment().location]",
             "subscriptionId": "[parameters('singlePlatformSubscriptionId')]",
@@ -10182,7 +10182,7 @@
             // Assigning Azure Backup policy to platform management group if condition is true
             "condition": "[and(equals(parameters('enableVmBackupForIdentity'), 'Yes'), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('esLitedeploymentNames').azBackupIdentityLitePolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[deployment().location]",
@@ -10212,7 +10212,7 @@
             // Assigning deny subnet without nsg policy to identity management group if condition is true
             "condition": "[and(equals(parameters('denySubnetWithoutNsgForIdentity'), 'Yes'), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('esLitedeploymentNames').subnetNsgIdentityLitePolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[deployment().location]",
@@ -10243,7 +10243,7 @@
             // Assigning deny management ports from internet policy landing zones management group if condition is true
             "condition": "[and(equals(parameters('denyMgmtPortsForIdentity'), 'Yes'), not(empty(parameters('singlePlatformSubscriptionId'))))]",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2024-11-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('esLitedeploymentNames').mgmtFromInternetIdentityLitePolicyDeploymentName]",
             "scope": "[variables('scopes').platformManagementGroup]",
             "location": "[deployment().location]",
@@ -10269,7 +10269,7 @@
         },
         {
             "condition": "[equals(parameters('telemetryOptOut'), 'No')]",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentName]",
             "location": "[deployment().location]",
             "type": "Microsoft.Resources/deployments",
@@ -10284,7 +10284,7 @@
         },
         {
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), not(empty(parameters('singlePlatformSubscriptionId'))))]",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentNameSinglePlatformSub]",
             "location": "[deployment().location]",
             "type": "Microsoft.Resources/deployments",
@@ -10299,7 +10299,7 @@
         },
         {
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), empty(parameters('singlePlatformSubscriptionId')))]",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentNameMultiPlatformSubs]",
             "location": "[deployment().location]",
             "type": "Microsoft.Resources/deployments",
@@ -10314,7 +10314,7 @@
         },
         {
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), equals(parameters('enableHub'), 'No'))]",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentNameNetworkingNone]",
             "location": "[deployment().location]",
             "type": "Microsoft.Resources/deployments",
@@ -10329,7 +10329,7 @@
         },
         {
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), or(equals(parameters('enableHub'), 'vhub'), equals(parameters('enableHub'), 'nva')))]",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentNameNetworkingHubSpoke]",
             "location": "[deployment().location]",
             "type": "Microsoft.Resources/deployments",
@@ -10344,7 +10344,7 @@
         },
         {
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), equals(parameters('enableHub'), 'vwan'))]",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentNameNetworkingVirtualWan]",
             "location": "[deployment().location]",
             "type": "Microsoft.Resources/deployments",
@@ -10359,7 +10359,7 @@
         },
         {
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), equals(parameters('enableMonitorBaselines'), 'Yes'))]",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').ambaPortalPidCuaDeploymentName]",
             "location": "[deployment().location]",
             "type": "Microsoft.Resources/deployments",
@@ -10374,7 +10374,7 @@
         },
         {
             "condition": "[and(equals(parameters('telemetryOptOut'), 'No'), equals(parameters('enableSecondaryRegion'), 'Yes'))]",
-            "apiVersion": "2022-09-01",
+            "apiVersion": "2026-06-01",
             "name": "[variables('deploymentNames').pidCuaDeploymentNameSecondaryRegion]",
             "location": "[deployment().location]",
             "type": "Microsoft.Resources/deployments",
